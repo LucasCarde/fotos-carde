@@ -2,7 +2,10 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
     <title>Fotos · Carde</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -130,25 +133,71 @@
         font-style: normal;
       }
 
-      @media (max-width: 760px) {
+      @media (max-width: 900px) {
+        html,
+        body {
+          height: 100%;
+          overflow: hidden;
+        }
+
         .frame {
-          padding: 10px;
+          min-height: 100dvh;
+          padding: 8px;
+        }
+
+        .stage {
+          min-height: calc(100dvh - 16px);
+          border-radius: 22px;
+          background-position: center 46%;
+        }
+
+        .stage::after {
+          background:
+            linear-gradient(to top, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.35) 34%, rgba(0, 0, 0, 0.22) 100%);
+        }
+
+        .top {
+          top: 14px;
+          padding: 8px 14px;
+          font-size: 13px;
         }
 
         .bottom {
-          left: 16px;
-          right: 16px;
+          left: 18px;
+          right: 18px;
+          bottom: max(18px, env(safe-area-inset-bottom));
           flex-direction: column;
-          align-items: flex-start;
-        }
-
-        .side {
-          width: auto;
-          padding-bottom: 18px;
+          align-items: stretch;
+          gap: 16px;
         }
 
         h1 {
-          font-size: clamp(76px, 22vw, 120px);
+          font-stretch: 112%;
+          font-size: clamp(58px, 16.5vw, 84px);
+          letter-spacing: -0.045em;
+        }
+
+        .side {
+          width: 100%;
+          padding-bottom: 0;
+        }
+
+        .side p {
+          margin: 0 0 14px;
+          font-size: 14px;
+        }
+
+        .go {
+          width: 100%;
+          min-height: 54px;
+          justify-content: space-between;
+          padding: 8px 8px 8px 18px;
+          font-size: 17px;
+        }
+
+        .go i {
+          width: 38px;
+          height: 38px;
         }
       }
     </style>
