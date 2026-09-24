@@ -53,6 +53,7 @@
         content: "";
         position: absolute;
         inset: 0;
+        pointer-events: none;
         background:
           linear-gradient(to top, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.18) 38%, rgba(0, 0, 0, 0.28) 100%);
       }
@@ -218,5 +219,17 @@
         </div>
       </main>
     </div>
+    <script>
+      const button = document.getElementById("entrar");
+      fetch("link.txt?t=" + Date.now(), { cache: "no-store" })
+        .then((response) => response.text())
+        .then((text) => {
+          const url = (text.trim().split(/\s+/)[0] || "").replace(/\/$/, "");
+          if (/^https:\/\/[a-z0-9-]+\.trycloudflare\.com$/.test(url)) {
+            button.href = url;
+          }
+        })
+        .catch(() => {});
+    </script>
   </body>
 </html>
